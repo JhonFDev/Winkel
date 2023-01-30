@@ -1,15 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-import Loading from '../components/Loading'
-
-
-export default function Home() {
+export default function Login() {
   return (
     <View>
-      <Text>Home</Text>
-      <Loading/>
-
+      <Text>Login</Text>
     </View>
   )
 }

@@ -1,5 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
+
+//mis imports
 import Home from '../screens/Home';
 
 
