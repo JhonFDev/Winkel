@@ -19,10 +19,12 @@ export default function UserGuest() {
       <Button
         buttonStyle={styles.button}
         title="Inicia Sesion"
-        onPress={() => navigation.navigate("logintstack")}
-      />
+        onPress={() => navigation.navigate("loginstack")}
+        />
       <Text style={styles.title}>Ó</Text>
-      <Button buttonStyle={styles.button} title="Registrarse" />
+      <Button buttonStyle={styles.button} title="Registrate"
+        onPress={() => navigation.navigate("registerstack")}
+      />
     </ScrollView>
   );
 }

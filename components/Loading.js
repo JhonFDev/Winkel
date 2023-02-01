@@ -26,7 +26,7 @@ export default function Loading({ isVisible}) {
           />
         }
         title="Start Building"
-        onPress={() => navigation.navigate("Account")}
+        onPress={() => navigation.navigate("account")}
       />
     </Overlay>
   );

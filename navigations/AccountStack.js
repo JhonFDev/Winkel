@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 //mis imports
 import Account from "../screens/account/Account";
 import Login from "../screens/account/Login";
+import Register from "../screens/account/Register";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,10 +19,17 @@ export default function AccountStack() {
         }}
       />
       <Stack.Screen
-        name="logintstack"
+        name="loginstack"
         component={Login}
         options={{
           title: "Inicio sesion en Stack",
+        }}
+      />
+      <Stack.Screen
+        name="registerstack"
+        component={Register}
+        options={{
+          title: "Registarse en Stack",
         }}
       />
     </Stack.Navigator>
