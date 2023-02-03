@@ -1,13 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import RegisterForm from '../../components/account/RegisterForm'
 
-
-
-export default function Register() {
+export default function RegisterForm() {
   return (
     <View>
-      <RegisterForm/>
+      <Text>RegisterForm</Text>
     </View>
   )
 }
