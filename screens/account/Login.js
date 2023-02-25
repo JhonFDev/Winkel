@@ -1,8 +1,14 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Button, Image, Icon } from "@rneui/themed";
+import { useNavigation } from "@react-navigation/native"
+
+//mis imports
+import LoginForm from "../../components/account/LoginForm";
+
 
 export default function Login() {
+  const navigation = useNavigation();
   return (
     <ScrollView centerContent="true" style={styles.viewBody}>
       <Image
@@ -11,21 +17,10 @@ export default function Login() {
         resizeMode="contain"
       />
       <View>
+        <LoginForm/> 
         <Text></Text>
-        <Button
-          buttonStyle={styles.buttom}
-          title="Inicia Sesion con Winkel"
-          icon={
-            <Icon
-              name="emoticon-cool"
-              type="material-community"
-              color="white"
-              size={30}
-              iconStyle={{ marginRight: 10 }}
-            />
-          }
-        />
-        <Button
+        
+        {/* <Button
           buttonStyle={styles.buttom}
           title="Inicia Sesion con Facebook"
           icon={
@@ -63,7 +58,7 @@ export default function Login() {
               iconStyle={{ marginRight: 10 }}
             />
           }
-        />
+        /> */}
       </View>
     </ScrollView>
   );

@@ -15,7 +15,7 @@ export default function UserGuest() {
         resizeMode="contain"
         style={styles.image}
       />
-      <Text style={styles.title}>Bienvenido a Winkel</Text>
+      <Text style={styles.title}>Bienvenido a Winkel 🤖</Text>
       <Button
         buttonStyle={styles.button}
         title="Inicia Sesion"

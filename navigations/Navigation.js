@@ -6,6 +6,8 @@ import React from "react";
 //mis imports
 import AccountStack from "./AccountStack";
 import HomeStack from "./HomeStack";
+import GetApiTest from "../utils/GetApiTest";
+
 
 const Tab = createBottomTabNavigator();
 
@@ -17,8 +19,11 @@ export default function Navigation() {
       case "home":
         iconName = "home-circle-outline";
         break;
-      case "account":
+        case "account":
         iconName = "account-circle-outline";
+        break;
+        case "getapitest":
+        iconName = "api";
         break;
     }
     return (
@@ -51,6 +56,13 @@ export default function Navigation() {
           component={AccountStack}
           options={{ title: "Perfil en Tab" }}
         />
+        <Tab.Screen
+        name="getapitest"
+        component={GetApiTest}
+        options={{
+          title: "aPiTEst en Stack",
+        }}
+      />
       </Tab.Navigator>
     </NavigationContainer>
     //finaliza el retorno navegacion por tabs.

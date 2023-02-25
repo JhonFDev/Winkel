@@ -1,19 +1,38 @@
-import React from "react";
-import { StyleSheet, Text, View, Alert } from "react-native";
+import React, {useEffect, useState}from "react";
+import { StyleSheet, Text, View, Alert, NavigatorIOS } from "react-native";
 import { Button, Overlay, Icon } from "@rneui/themed";
 import { ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-
-export default function Loading({ isVisible}) {
+export default function Loading({ isVisible, text, textbtn, changed, duration, onTimeOut}) {
   const navigation = useNavigation()
- 
+  const[showOverlay, setShowOverlay] = useState(isVisible)
+
+  useEffect(() => {
+    setShowOverlay(isVisible);
+    if (isVisible) {
+      setTimeout(() => {
+        setShowOverlay(false);
+        if (onTimeOut) {
+          onTimeOut();
+        }
+      }, duration);
+    }
+  },[isVisible])
+
   return (
-    <Overlay isVisible={isVisible} overlayStyle={styles.overlay}>
-      <Text style={styles.textPrimary}>Hello!</Text>
-      <Text style={styles.textSecondary}>Welcome to Winkel Virtual Store</Text>
+    <Overlay isVisible={showOverlay} overlayStyle={styles.overlay}>
+      <View>
+      <Text style={styles.textPrimary}>Hola! 😎</Text>
+      <Text ></Text>
       <ActivityIndicator style={styles.activityindicator} color="white" size="small"/>
-      <ActivityIndicator style={styles.activityindicator} color="red" size="large"/>
+        {
+          text && <Text style={styles.textSecondary}>{text}</Text>
+        }
+        
+              <ActivityIndicator style={styles.activityindicator} color="red" size="large" />
+      {
+          textbtn && 
       <Button
         buttonStyle={styles.button}
         icon={
@@ -25,9 +44,12 @@ export default function Loading({ isVisible}) {
             iconStyle={{ marginRight: 10 }}
           />
         }
-        title="Start Building"
-        onPress={() => navigation.navigate("account")}
-      />
+        onPress={() => navigation.navigate(changed)}
+        style={styles.textPrimary}>{textbtn}
+        
+        </Button>
+        }
+      </View>
     </Overlay>
   );
 }
@@ -46,6 +68,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: "center",
     fontSize: 17,
+    fontWeight:"bold"
   },
   overlay: {
     elevation: 100,

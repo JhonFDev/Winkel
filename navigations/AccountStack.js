@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Account from "../screens/account/Account";
 import Login from "../screens/account/Login";
 import Register from "../screens/account/Register";
+import LoginForm from "../components/account/LoginForm";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +34,14 @@ export default function AccountStack() {
           title: "Registarse en Stack",
         }}
       />
+      <Stack.Screen
+        name="loginformstack"
+        component={LoginForm}
+        options={{
+          title: "iniciando sesion en Stack",
+        }}
+      />
+      
     </Stack.Navigator>
   );
 }
