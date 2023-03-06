@@ -1,19 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, } from 'react-native'
 import React from 'react'
 import { Avatar } from '@rneui/themed'
+
+//mis imports
 import { loadImageFromGallery } from '../../utils/helpers'
+import ChangeDisplayNameForm from './ChangeDisplayNameForm'
 
 
-export default function InfoUser() {
+export default function InfoUser({user, newDisplayName}) {
 
     const changePhoto = async() => {
         console.log("cambia foto?")
         const result = await loadImageFromGallery([1, 1])
         console.log(result)
+        if(!result.statusresponse){
+          return
+        }
     }
 
   return (
     <View style={styles.container}>
+      
       <Avatar
         rounded
         size={'large'}
@@ -23,7 +30,11 @@ export default function InfoUser() {
       />
       <View style={styles.infouser}>
         <Text style={styles.displayName}>
-            anonimo
+            
+              
+                Winkel Anonimus
+              
+            
         </Text>
       </View>
     </View>

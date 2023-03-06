@@ -4,9 +4,10 @@ import { Button } from "@rneui/themed";
 import { useNavigation } from "@react-navigation/native";
 import Toast from "react-native-easy-toast";
 
-
+//mis imports
 import Loading from'../../components/Loading'
 import InfoUser from "../../components/account/InfoUser";
+import AccountOptions from "../../components/account/AccountOptions";
 
 export default function UserLogged() {
   const toastRef = useRef();
@@ -15,7 +16,11 @@ export default function UserLogged() {
   return (
     <View style={styles.container}>
       <InfoUser/>
+      
       <Text>UserLogged hello</Text>
+      <AccountOptions
+        toastRef={toastRef}
+      />
       <Button
         title="cerrar sesion"
         buttonStyle={styles.btnCloseSession}

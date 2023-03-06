@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
 
 export default function actions() {
@@ -14,4 +14,8 @@ export default function actions() {
   )
 }
 
-const styles = StyleSheet.create({})
+export const uploadImage = async(image, path, name) => {
+const result = {statusResponse: false, error: null, uri: null}
+return result
+}
+
