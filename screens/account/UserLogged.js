@@ -15,9 +15,8 @@ export default function UserLogged() {
 
   return (
     <View style={styles.container}>
-      <InfoUser/>
       
-      <Text>UserLogged hello</Text>
+      <InfoUser/>
       <AccountOptions
         toastRef={toastRef}
       />

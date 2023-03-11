@@ -12,7 +12,7 @@ export default function ChangeDisplayNameForm({displayName, setShowModal, toastR
             return
         }
 
-        console.log("fuckyeah!", newDisplayName)
+        console.log(newDisplayName)
           {
             text && <Text>{newDisplayName}</Text>
           }
@@ -48,7 +48,7 @@ export default function ChangeDisplayNameForm({displayName, setShowModal, toastR
         />
        
         <Button
-            title="Cambiar nombres y apellios"
+            title="Cambiar nombre de usuario"
             containerStyle={styles.btnContainer}
             buttonStyle={styles.btn}
             onPress={onSubmit}
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:1
     },
     input:{
-        borderColor:"red",
+        borderColor:"primary",
         borderWidth:1,
         width:"100%"
         

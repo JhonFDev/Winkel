@@ -5,8 +5,11 @@ import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { isEmpty } from "lodash"
 
-
+//mis imports
 import { validateEmail } from "../../utils/helpers";
+import { loginUser } from "../../utils/actions";
+import UserLogged from "../../screens/account/UserLogged";
+
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,9 +25,9 @@ export default function LoginForm() {
 
   const doLogin = () => {
     if (!validateData()) {
-      console.log("logueando" + formData.email)
       return;
     }
+    loginUser(formData.email, formData.password)
     alert("Hola " + formData.email + " has iniciado sesion con exito");
     navigation.navigate("home")
   } 
@@ -39,8 +42,8 @@ export default function LoginForm() {
       isValid = false;
     }
     if (isEmpty(formData.password)) {
-      setErrorPassword("la contraseña son incorrectos")
-      
+      setErrorPassword("la contraseña esta mal")
+      isValid= false;
     }
     
     

@@ -23,7 +23,7 @@ export default function InfoUser({user, newDisplayName}) {
       
       <Avatar
         rounded
-        size={'large'}
+        size="large"
         onPress={changePhoto}
         containerStyle={styles.avatar}
         source={require("../../assets/VAN.png")}

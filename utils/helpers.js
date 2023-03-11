@@ -1,16 +1,17 @@
 import * as ImagePicker from "expo-image-picker";
 import { Alert, Image } from "react-native";
 
-//helper para Validar campos
+//Validar campos del correo
 export function validateEmail(email) {
   const re =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 }
+// fin Validar campos del correo
 
+//permiso para cargar imagen de galeria
 export const loadImageFromGallery = async (Array) => {
-  const response = ({ statusresponse = false, image = null } =
-    ImagePicker.useMediaLibraryPermissions);
+  const response = ({ statusresponse = false, image = null } = ImagePicker.useMediaLibraryPermissions);
 
   const resultpermission =
     await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -32,6 +33,8 @@ export const loadImageFromGallery = async (Array) => {
   response.image = result.assets;
   return response;
 };
+//fin permiso para cargar imagen de galeria
+
 
 export const fileBlob = async(Path) => {
   const file = await fetch(Path)

@@ -1,9 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
+import AddShop from '../screens/shop/AddShop';
 
 //mis imports
-import Home from '../screens/Home';
-
+import Home from '../screens/shop/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +15,13 @@ export default function HomeStack() {
             component={Home}
             options={{
                 title:"Inicio en Stack"
+            }}
+        />
+        <Stack.Screen
+            name='add-shop'
+            component={AddShop}
+            options={{
+                title:"Shop en Stack"
             }}
         />
     </Stack.Navigator>

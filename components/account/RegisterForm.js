@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { validateEmail } from "../../utils/helpers";
 import Loading from "../Loading";
 import LoginForm from "./LoginForm";
+import { registerUser } from "../../utils/actions";
 
 export default function RegisterForm() {
   const navigation = useNavigation();
@@ -17,25 +18,34 @@ export default function RegisterForm() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [errorConfirm, setErrorConfirm] = useState("");
-  const [errorTelephone, setErrorTelephone] = useState("");
+  const [errorPhone, setErrorPhone] = useState("");
 
   const setFormDataOnChange = (e, type) => {
     setFormData({ ...formData, [type]: e.nativeEvent.text });
   };
 
-  const registeruser = () => {
-    if (!validateData()) {
-      return;
+  const doRegisterUser = () => {
+    if (validateData()) {
+     // alert("hola" + formData.username);
+      registerUser(
+        formData.username,
+        formData.email,
+        formData.password,
+        formData.phone,
+        formData.birthday,
+        formData.address,
+        formData.rol
+      );
+      navigation.navigate("loginstack");
     }
-
-    alert("Hola " + formData.user + " se completo el registro");
+    return;
   };
 
   const validateData = () => {
     setErrorEmail("");
     setErrorPassword("");
     setErrorConfirm("");
-    setErrorTelephone("");
+    setErrorPhone("");
 
     let isValid = true;
 
@@ -44,8 +54,8 @@ export default function RegisterForm() {
       isValid = false;
     }
 
-    if (size(formData.telephone) !== 10) {
-      setErrorTelephone("el numero movil debe contener 10 digitos");
+    if (size(formData.phone) !== 10) {
+      setErrorPhone("el numero movil debe contener 10 digitos");
       isValid = false;
     }
     if (size(formData.password) < 8) {
@@ -79,16 +89,38 @@ export default function RegisterForm() {
       <Input
         containerStyle={styles.input}
         placeholder="Ingresar Usuario"
-        onChange={(e) => setFormDataOnChange(e, "user")}
-        defaultValue={formData.user}
+        onChange={(e) => setFormDataOnChange(e, "username")}
+        defaultValue={formData.username}
       />
       <Input
         containerStyle={styles.input}
         placeholder="Ingresar numero movil"
-        onChange={(e) => setFormDataOnChange(e, "telephone")}
+        onChange={(e) => setFormDataOnChange(e, "phone")}
         keyboardType="phone-pad"
-        errorMessage={errorTelephone}
-        defaultValue={formData.telephone}
+        errorMessage={errorPhone}
+        defaultValue={formData.phone}
+      />
+      <Input
+        containerStyle={styles.input}
+        placeholder="Ingresar direccion"
+        onChange={(e) => setFormDataOnChange(e, "address")}
+        defaultValue={formData.address}
+      />
+      <Input
+        containerStyle={styles.input}
+        label="Ingresa fecha de cumpleaños"
+        labelStyle={{ color: "black" }}
+        placeholder="dd/mm/aaaa"
+        onChange={(e) => setFormDataOnChange(e, "birthday")}
+        defaultValue={formData.birthday}
+      />
+      <Input
+        containerStyle={styles.input}
+        label="ingresar rol"
+        labelStyle={{ color: "black" }}
+        placeholder="Vendedor o comprador"
+        onChange={(e) => setFormDataOnChange(e, "rol")}
+        defaultValue={formData.rol}
       />
       <Input
         containerStyle={styles.input}
@@ -128,18 +160,23 @@ export default function RegisterForm() {
         title="Registrar nuevo usuario"
         buttonStyle={styles.button}
         containerStyle={styles.btncontainer}
-        onPress={() => registeruser()}
+        onPress={() => doRegisterUser()}
       />
+      <Loading isVisible={true} text="Tu registro ha sido un exito" textbtn="ir a iniciar sesion" duration={3000} />
+
     </View>
   );
-}
+      }
 const defaultFormValues = () => {
   return {
     email: "",
-    user: "",
-    telephone: "",
+    username: "",
+    phone: "",
     password: "",
     confirm: "",
+    birthday: "",
+    rol: "",
+    address: "",
   };
 };
 

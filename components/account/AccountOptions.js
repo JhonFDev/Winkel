@@ -8,6 +8,7 @@ import Modal from "../Modal";
 import ChangeDisplayNameForm from "./ChangeDisplayNameForm";
 import ChangeEmailForm from "./ChangeEmailForm";
 import ChangePasswordForm from "./ChangePasswordForm";
+import CompleteUserRegister from "./CompleteUserRegister";
 
 export default function AccountOptions({ toastRef }) {
   const [showModal, setShowModal] = useState(true);
@@ -16,9 +17,17 @@ export default function AccountOptions({ toastRef }) {
   const generateOptions = () => {
     return [
       {
+        title: "Completar Datos requeridos",
+        iconNameLeft: "card-account-details",
+        iconColorLeft: "black",
+        iconNameRight: "chevron-right",
+        iconColorRight: "rebeccapurple",
+        onpress: () => selectedComponent("completedregisteruser"),
+      },
+      {
         title: "Cambiar nombre de usuario",
         iconNameLeft: "account-circle",
-        iconColorLeft: "gray",
+        iconColorLeft: "black",
         iconNameRight: "chevron-right",
         iconColorRight: "rebeccapurple",
         onpress: () => selectedComponent("displayname"),
@@ -26,7 +35,7 @@ export default function AccountOptions({ toastRef }) {
       {
         title: "Cambiar correo",
         iconNameLeft: "at",
-        iconColorLeft: "gray",
+        iconColorLeft: "black",
         iconNameRight: "chevron-right",
         iconColorRight: "rebeccapurple",
         onpress: () => selectedComponent("email"),
@@ -34,7 +43,7 @@ export default function AccountOptions({ toastRef }) {
       {
         title: "Cambiar Contraseña",
         iconNameLeft: "lock-reset",
-        iconColorLeft: "gray",
+        iconColorLeft: "black",
         iconNameRight: "chevron-right",
         iconColorRight: "rebeccapurple",
         onpress: () => selectedComponent("password"),
@@ -43,8 +52,16 @@ export default function AccountOptions({ toastRef }) {
   };
 
   const selectedComponent = (key) => {
-    console.log(key);
     switch (key) {
+      case "completedregisteruser":
+        setRenderComponent(
+          <CompleteUserRegister
+        setShowModal={setShowModal}
+        toastRef={toastRef}
+        />
+        );
+        
+        break;
       case "displayname":
         setRenderComponent(
             <ChangeDisplayNameForm
@@ -75,6 +92,7 @@ export default function AccountOptions({ toastRef }) {
 
   return (
     <View>
+      
       <Text>configuracion Perfil de Usuario</Text>
       {map(menuOptions, (menu, index) => (
         <ListItem key={index} style={styles.menuItem} onPress={menu.onpress}>
